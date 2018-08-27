@@ -26,11 +26,17 @@ class Login extends Component {
                   type="text"
                   placeholder="Email or Username"
                   class="input"
+                  required
                 />
                 <br />
-                <input type="password" placeholder="Password" class="input" />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  class="input"
+                  required
+                />
                 <br />
-                <div class="btn">log in</div>
+                <button class="btn">log in</button>
                 <span>
                   <Link to="Forgot">I forgot my username or password.</Link>
                 </span>

@@ -18,10 +18,11 @@ class Forgot extends Component {
                   type="text"
                   placeholder=" Enter your Email "
                   class="input"
+                  required
                 />
 
                 <br />
-                <div class="btn">Reset password</div>
+                <button class="btn">Reset password</button>
                 <span>
                   <Link to="Forgot">.</Link>
                 </span>

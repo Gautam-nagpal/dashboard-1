@@ -2,13 +2,56 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 class Login extends Component {
-  state = {};
+  state = {
+    email: "",
+    password: ""
+  };
+
+  change = e => {
+    e.preventDefault();
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  componentWillMount() {
+    if (localStorage.getItem("logindata")) {
+      this.props.history.push("/Dashboard");
+    }
+  }
+  logincheck = e => {
+    e.preventDefault();
+    var obj = JSON.parse(localStorage.getItem("data"));
+    if (obj === null) {
+      alert("signup first");
+
+      this.props.history.push("/Signup");
+    } else {
+      let found = obj.find(data => {
+        return (
+          data.email === this.state.email &&
+          data.password === this.state.password
+        );
+      });
+
+      if (found) {
+        localStorage.setItem("logindata", JSON.stringify(this.state));
+
+        this.props.history.push("/Dashboard");
+        this.setState({
+          [this.state.email]: "",
+          [this.state.password]: ""
+        });
+      } else {
+        alert("not match");
+      }
+    }
+  };
+
   render() {
     return (
       <div>
-        <form>
-          <div class="wrapper">
-            <div class="container">
+        <form onSubmit={this.logincheck}>
+          <div className="wrapper">
+            <div className="container">
               <Link to="/Signup">
                 <button color="inherit" className="signup">
                   <h3> Sign Up</h3>
@@ -21,22 +64,30 @@ class Login extends Component {
                 </button>
               </Link>
 
-              <div class="login-form">
+              <div className="login-form">
                 <input
                   type="text"
-                  placeholder="Email or Username"
-                  class="input"
+                  placeholder="Email "
+                  name="email"
+                  onChange={this.change}
+                  className="input"
                   required
                 />
                 <br />
                 <input
                   type="password"
                   placeholder="Password"
-                  class="input"
+                  className="input"
+                  name="password"
+                  onChange={this.change}
                   required
                 />
                 <br />
-                <button class="btn">log in</button>
+
+                <button type="submit" className="btn">
+                  log in
+                </button>
+
                 <span>
                   <Link to="Forgot">I forgot my username or password.</Link>
                 </span>

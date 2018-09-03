@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { resignup } from "../action/action.js";
+import { willmount } from "../action/action.js";
 
 class Signup extends Component {
   state = {
@@ -16,22 +17,49 @@ class Signup extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  componentWillMount() {
+    if (localStorage.getItem("logindata")) {
+      this.props.history.push("/Dashboard");
+    }
+    var obj = JSON.parse(localStorage.getItem("data"));
+    willmount(obj);
+  }
   Signup = e => {
     e.preventDefault();
-    var mailformat = /^[A-Z0-9_'%=+!`#~$*?^{}&|-]+([\.][A-Z0-9_'%=+!`#~$*?^{}&|-]+)*@[A-Z0-9-]+(\.[A-Z0-9-]+)+$/i;
-    if (this.state.email.match(mailformat)) {
+    var obj = JSON.parse(localStorage.getItem("data"));
+    if (obj === null) {
       if (this.state.password === this.state.confirmpass) {
         resignup(this.state);
       } else {
         alert("password not match");
       }
+      this.props.history.push("/Login");
     } else {
-      alert(" wrong email id");
-    }
+      let found = obj.find(data => {
+        return data.email === this.state.email;
+      });
 
-    // var obj = JSON.parse(localStorage.getItem("data"));
-    // console.log("local storage data coming===", obj);
+      if (this.state.password === this.state.confirmpass) {
+        if (found) {
+          return alert("email alredy exist");
+        } else {
+          resignup(this.state);
+          this.props.history.push("/Login");
+        }
+      } else {
+        alert("password not match");
+      }
+
+      // this.setState({
+      //   name: "",
+      //   email: "",
+      //   username: "",
+      //   password: "",
+      //   confirmpass: ""
+      // });
+    }
   };
+
   render() {
     return (
       <div>
@@ -53,6 +81,7 @@ class Signup extends Component {
                 <input
                   type="text"
                   placeholder="Name"
+                  value={this.state.name}
                   name="name"
                   onChange={this.change}
                   className="input"
@@ -62,6 +91,8 @@ class Signup extends Component {
                   type="text"
                   placeholder="Your Email Address"
                   name="email"
+                  value={this.state.email}
+                  pattern="(.+)@(.+){1,}\.(.+){2,}"
                   onChange={this.change}
                   className="input"
                   required
@@ -71,6 +102,7 @@ class Signup extends Component {
                   type="text"
                   placeholder="Choose a Username"
                   name="username"
+                  value={this.state.username}
                   onChange={this.change}
                   className="input"
                   required
@@ -82,6 +114,7 @@ class Signup extends Component {
                   className="input"
                   minLength="10"
                   name="password"
+                  value={this.state.password}
                   onChange={this.change}
                   required
                 />
@@ -91,10 +124,12 @@ class Signup extends Component {
                   placeholder="Confirm password "
                   className="input"
                   onChange={this.change}
+                  value={this.state.confirmpass}
                   name="confirmpass"
                   required
                 />
                 <br />
+
                 <button type="Submit" className="btn">
                   Create account
                 </button>
@@ -102,6 +137,7 @@ class Signup extends Component {
             </div>
           </div>
         </form>
+        {this.state.allval}
       </div>
     );
   }

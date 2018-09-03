@@ -7,9 +7,9 @@ class Forgot extends Component {
     return (
       <div>
         <form>
-          <div class="wrapper">
-            <div class="container">
-              <div class="login-form">
+          <div className="wrapper">
+            <div className="container">
+              <div className="login-form">
                 <h2 className="forgot">Forgot password</h2>
                 <p className="forgot">
                   We just need your Email to reset your password
@@ -17,12 +17,12 @@ class Forgot extends Component {
                 <input
                   type="text"
                   placeholder=" Enter your Email "
-                  class="input"
+                  className="input"
                   required
                 />
 
                 <br />
-                <button class="btn">Reset password</button>
+                <button className="btn">Reset password</button>
                 <span>
                   <Link to="Forgot">.</Link>
                 </span>

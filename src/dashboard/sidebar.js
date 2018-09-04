@@ -6,7 +6,7 @@ import Collections from "./collections";
 class Sidebar extends Component {
   state = {
     title: "",
-    name: "yoyo",
+    data: [],
     toggle: false
   };
 
@@ -21,7 +21,7 @@ class Sidebar extends Component {
   addcollection = e => {
     e.preventDefault();
     this.toggle();
-    if (this.state.toggle) {
+    if (this.state.toggle && this.state.title.trim()) {
       Addcollection(this.state);
       this.setState({ title: "" });
     }
@@ -31,12 +31,16 @@ class Sidebar extends Component {
       <div>
         <div
           className="w3-sidebar w3-light-grey w3-bar-block"
-          style={{ width: "150px" }}
+          style={{ width: "135px" }}
         >
           {this.props.value.map((data, index) => {
             return (
               <div key={index}>
-                <Collections data={data} index={index} />
+                <Collections
+                  collectiondataindex={this.props.collectiondataindex}
+                  data={data}
+                  index={index}
+                />
               </div>
             );
           })}
@@ -68,8 +72,8 @@ const mapStateToProps = state => {
     return {
       value: [
         {
-          title: "heloooo",
-          name: "yoyo"
+          title: "Default",
+          data: ""
         }
       ]
     };

@@ -32,6 +32,31 @@ export let login = (state = initialstate, action) => {
     collections = [...collections, action.payload];
     return { ...state, collections };
   }
+  //
+  //
+  else if (action.type === "addcollection_data") {
+    let { collections } = state;
+    collections[action.payload.index].data = [
+      ...collections[action.payload.index].data,
+      action.payload.data
+    ];
+    return { ...state, collections };
+  }
+  //
+  //
+  else if (action.type === "adddetails") {
+    let { collections } = state;
+
+    collections[action.payload.classindex].data[
+      action.payload.nameindex
+    ][0].details = [
+      ...collections[action.payload.classindex].data[
+        action.payload.nameindex
+      ][0].details,
+      action.payload.data
+    ];
+    return { ...state, collections };
+  }
 };
 
 export const store = createStore(login);

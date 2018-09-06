@@ -49,12 +49,7 @@ export let login = (state = initialstate, action) => {
 
     collections[action.payload.classindex].data[
       action.payload.nameindex
-    ][0].details = [
-      ...collections[action.payload.classindex].data[
-        action.payload.nameindex
-      ][0].details,
-      action.payload.data
-    ];
+    ][0].details = action.payload.data;
     return { ...state, collections };
   }
 };

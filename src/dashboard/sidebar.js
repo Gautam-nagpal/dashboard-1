@@ -1,7 +1,29 @@
 import React, { Component } from "react";
+import { withStyles } from "@material-ui/core/styles";
+import Avatar from "@material-ui/core/Avatar";
+import classNames from "classnames";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Addcollection } from "../action/action";
 import Collections from "./collections";
+import a from "../images/a.jpeg";
+
+const styles = {
+  row: {
+    display: "flex",
+    justifyContent: "center"
+  },
+  avatar: {
+    margin: 10
+  },
+  bigAvatar: {
+    width: 100,
+    height: 100
+  }
+};
+
+//
+//
 
 class Sidebar extends Component {
   state = {
@@ -21,18 +43,31 @@ class Sidebar extends Component {
   addcollection = e => {
     e.preventDefault();
     this.toggle();
+
     if (this.state.toggle && this.state.title.trim()) {
-      Addcollection(this.state);
+      let result = this.props.value.find(
+        data => data.title === this.state.title
+      );
+      if (!result) {
+        Addcollection(this.state);
+        this.setState({ title: "" });
+      }
       this.setState({ title: "" });
     }
   };
+
   render() {
+    const { classes } = this.props;
     return (
       <div>
-        <div
-          className="w3-sidebar w3-light-grey w3-bar-block"
-          style={{ width: "135px" }}
-        >
+        <div className={classes.row}>
+          <Avatar
+            alt="Adelle Charles"
+            src={a}
+            className={classNames(classes.avatar, classes.bigAvatar)}
+          />
+        </div>
+        <div className="w3-sidebar" style={{ height: "92.5vh" }}>
           {this.props.value.map((data, index) => {
             return (
               <div key={index}>
@@ -45,21 +80,21 @@ class Sidebar extends Component {
             );
           })}
 
-          <form onSubmit={this.addcollection}>
+          <form className="sidebar-down" onSubmit={this.addcollection}>
             {this.state.toggle ? (
               <input
-                className="w3-bar-item  sidebar-down"
+                className="collection-input "
                 type="text"
                 name="title"
                 autoComplete="off"
                 value={this.state.title}
                 onChange={this.change}
               />
-            ) : null}
-
-            <button type="submit" className=" w3-button ">
-              Add collection
-            </button>
+            ) : (
+              <button type="submit" className="collection-button ">
+                Add collection
+              </button>
+            )}
           </form>
         </div>
       </div>
@@ -83,4 +118,9 @@ const mapStateToProps = state => {
     };
   }
 };
-export default connect(mapStateToProps)(Sidebar);
+
+Sidebar.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default connect(mapStateToProps)(withStyles(styles)(Sidebar));

@@ -31,27 +31,28 @@ class Collectiondata extends Component {
   };
   render() {
     return (
-      <div>
-        <h1>
-          data
-          {this.props.index}
-        </h1>
-        {this.props.data ? (
-          <form>
-            {this.state.toggle ? (
-              <input
-                className="w3-bar-item  sidebar-down"
-                type="text"
-                name="title"
-                autoComplete="off"
-                value={this.state.title}
-                onChange={this.change}
-              />
-            ) : null}
-
-            <button onClick={this.addData1}>Add details</button>
-          </form>
-        ) : null}
+      <div className="w3-collectionbar">
+        <h1 align="center">{this.props.data.title}</h1>
+        <div>
+          {this.props.data ? (
+            <form onSubmit={this.addData1}>
+              {this.state.toggle ? (
+                <input
+                  className="collection-input"
+                  type="text"
+                  name="title"
+                  autoComplete="off"
+                  value={this.state.title}
+                  onChange={this.change}
+                />
+              ) : (
+                <button type="submit" className="collection-button">
+                  Add details
+                </button>
+              )}
+            </form>
+          ) : null}
+        </div>
 
         {this.props.data && this.props.data.data && this.props.data.data.length
           ? this.props.data.data.map((da, index) => {

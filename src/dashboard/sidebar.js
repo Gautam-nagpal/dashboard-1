@@ -58,6 +58,9 @@ class Sidebar extends Component {
 
   render() {
     const { classes } = this.props;
+    let { logindata } = this.props;
+    console.log("login data got", logindata);
+
     return (
       <div>
         <div className={classes.row}>

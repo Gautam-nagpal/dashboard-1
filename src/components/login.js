@@ -33,7 +33,7 @@ class Login extends Component {
       });
 
       if (found) {
-        localStorage.setItem("logindata", JSON.stringify(this.state));
+        localStorage.setItem("logindata", JSON.stringify(found));
 
         this.props.history.push("/Dashboard");
         this.setState({

@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import Dash from "./dash";
 
 class Dashboard extends Component {
-  state = {};
+  state = {
+    logindata: ""
+  };
 
   componentWillMount() {
     if (localStorage.getItem("logindata")) {
+      var obj = JSON.parse(localStorage.getItem("logindata"));
+      this.setState({ logindata: obj });
     } else {
       this.props.history.push("/Login");
     }
@@ -22,7 +26,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <Dash logout={this.logout} />
+        <Dash logout={this.logout} logindata={this.state.logindata} />
       </div>
     );
   }

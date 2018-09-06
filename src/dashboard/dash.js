@@ -32,6 +32,7 @@ class Dash extends Component {
           <Sidebar
             collectiondataindex={this.collectiondataindex}
             datacoming={this.state.datacoming}
+            logindata={this.props.logindata}
           />
         </div>
         <div className="item3">

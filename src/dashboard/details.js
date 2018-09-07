@@ -3,6 +3,11 @@ import { connect } from "react-redux";
 import { Adddetails } from "../action/action.js";
 import Showdetails from "./showdetails.js";
 import Modal from "react-modal";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
+import { Deletedetails } from "../action/action.js";
 
 const customStyles = {
   content: {
@@ -15,6 +20,17 @@ const customStyles = {
     backgroundColor: "#eaefef"
   }
 };
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1
+  },
+  paper: {
+    padding: theme.spacing.unit * 2,
+    textAlign: "center",
+    color: theme.palette.text.secondary
+  }
+});
 
 class Details extends Component {
   state = {
@@ -59,46 +75,78 @@ class Details extends Component {
       });
     }
   };
+  delete = e => {
+    console.log("aa gyaasacasc", e);
+    let { value, classindex, nameindex } = this.props;
+    let detail = value[classindex].data[nameindex][0].details;
+
+    if (detail.length === undefined) {
+      Deletedetails(e, this.props.classindex, this.props.nameindex);
+    }
+  };
 
   form = () => {
+    const { classes } = this.props;
     return (
       <Modal isOpen={this.state.toggle} style={customStyles}>
-        <input
-          className="w3-bar-item  "
-          type="text"
-          name="name"
-          placeholder="Age"
-          autoComplete="off"
-          value={this.state.name}
-          onChange={this.change}
-        />
-        <input
-          className="w3-bar-item  "
-          type="number"
-          name="age"
-          placeholder="Age"
-          autoComplete="off"
-          value={this.state.age}
-          onChange={this.change}
-        />
-        <input
-          className="w3-bar-item  "
-          type="number"
-          name="phoneno"
-          placeholder="Phone No"
-          autoComplete="off"
-          value={this.state.phoneno}
-          onChange={this.change}
-        />
-        <input
-          className="w3-bar-item  "
-          type="text"
-          name="details"
-          placeholder="Details"
-          autoComplete="off"
-          value={this.state.details}
-          onChange={this.change}
-        />
+        <Grid container spacing={24}>
+          <Grid item xs={6}>
+            <Paper className={classes.paper}>
+              <input
+                className="w3-bar-item  "
+                type="text"
+                name="name"
+                placeholder="Name"
+                autoComplete="off"
+                value={this.state.name}
+                onChange={this.change}
+              />
+            </Paper>
+          </Grid>
+
+          <Grid item xs={6}>
+            <Paper className={classes.paper}>
+              <input
+                className="w3-bar-item  "
+                type="number"
+                name="age"
+                placeholder="Age"
+                autoComplete="off"
+                value={this.state.age}
+                onChange={this.change}
+              />
+            </Paper>
+          </Grid>
+
+          <Grid item xs={6}>
+            <Paper className={classes.paper}>
+              <input
+                className="w3-bar-item  "
+                type="number"
+                name="phoneno"
+                placeholder="Phone No"
+                autoComplete="off"
+                value={this.state.phoneno}
+                onChange={this.change}
+              />
+            </Paper>
+          </Grid>
+
+          <Grid item xs={6}>
+            <Paper className={classes.paper}>
+              <input
+                className="w3-bar-item  "
+                type="text"
+                name="details"
+                placeholder="Details"
+                autoComplete="off"
+                value={this.state.details}
+                onChange={this.change}
+              />
+            </Paper>
+          </Grid>
+        </Grid>
+
         <button onClick={this.adddetail}>save</button>
         <button onClick={this.handleClose}>close</button>
       </Modal>
@@ -134,7 +182,10 @@ class Details extends Component {
         value[classindex].data[nameindex] &&
         value[classindex].data[nameindex][0] &&
         value[classindex].data[nameindex][0].details ? (
-          <Showdetails details={value[classindex].data[nameindex][0].details} />
+          <Showdetails
+            details={value[classindex].data[nameindex][0].details}
+            delete={this.delete}
+          />
         ) : null}
       </div>
     );
@@ -152,5 +203,8 @@ const mapStateToProps = state => {
     };
   }
 };
+Details.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 
-export default connect(mapStateToProps)(Details);
+export default connect(mapStateToProps)(withStyles(styles)(Details));

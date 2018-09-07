@@ -38,7 +38,7 @@ class Collectiondata extends Component {
             <form onSubmit={this.addData1}>
               {this.state.toggle ? (
                 <input
-                  className="collection-input"
+                  className="collection-input2"
                   type="text"
                   name="title"
                   autoComplete="off"
@@ -53,6 +53,7 @@ class Collectiondata extends Component {
             </form>
           ) : null}
         </div>
+        <br />
 
         {this.props.data && this.props.data.data && this.props.data.data.length
           ? this.props.data.data.map((da, index) => {

@@ -18,8 +18,10 @@ class Header extends Component {
             <a>Contact</a>
           </li>
           <li style={{ float: "right" }}>
-            <button onClick={logout} className="active">
-              Logout
+            <button onClick={logout} className="logout-button">
+              <i className="material-icons" style={{ fontSize: 28 }}>
+                power_settings_new
+              </i>
             </button>
           </li>
         </ul>

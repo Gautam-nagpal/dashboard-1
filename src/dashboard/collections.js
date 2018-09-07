@@ -23,7 +23,6 @@ class Collections extends Component {
   };
 
   render() {
-    const { classes } = this.props;
     return (
       <React.Fragment>
         <div>

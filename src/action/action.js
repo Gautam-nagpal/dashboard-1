@@ -25,3 +25,10 @@ export const Adddetails = (data, classindex, nameindex) => {
     payload: { data: data, classindex: classindex, nameindex: nameindex }
   });
 };
+
+export const Deletedetails = (data, classindex, nameindex) => {
+  return store.dispatch({
+    type: "deletedetails",
+    payload: { data: data, classindex: classindex, nameindex: nameindex }
+  });
+};

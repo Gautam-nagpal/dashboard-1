@@ -31,7 +31,22 @@ class Collectiondatadata extends Component {
                 return (
                   <div key={index1}>
                     <ListItem button>
-                      <ListItemText>{finaldata.title}</ListItemText>
+                      <ListItemText>
+                        <div className="collectiondata-show">
+                          <i
+                            className="material-icons"
+                            style={{
+                              fontSize: 15,
+                              float: "left",
+                              paddingTop: 4
+                            }}
+                          >
+                            check_circle
+                          </i>
+                          &nbsp;&nbsp;&nbsp;
+                          {finaldata.title}
+                        </div>
+                      </ListItemText>
                     </ListItem>
                   </div>
                 );

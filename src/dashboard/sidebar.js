@@ -59,7 +59,6 @@ class Sidebar extends Component {
   render() {
     const { classes } = this.props;
     let { logindata } = this.props;
-    console.log("login data got", logindata);
 
     return (
       <div>
@@ -70,6 +69,9 @@ class Sidebar extends Component {
             className={classNames(classes.avatar, classes.bigAvatar)}
           />
         </div>
+        <h2>{logindata.username}</h2>
+        <p>{logindata.email}</p>
+        <br />
         <div className="w3-sidebar" style={{ height: "92.5vh" }}>
           {this.props.value.map((data, index) => {
             return (
@@ -86,7 +88,7 @@ class Sidebar extends Component {
           <form className="sidebar-down" onSubmit={this.addcollection}>
             {this.state.toggle ? (
               <input
-                className="collection-input "
+                className="collection-input1 "
                 type="text"
                 name="title"
                 autoComplete="off"

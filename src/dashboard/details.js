@@ -89,7 +89,7 @@ class Details extends Component {
     const { classes } = this.props;
     return (
       <Modal isOpen={this.state.toggle} style={customStyles}>
-        <Grid container spacing={24}>
+        <Grid container>
           <Grid item xs={6}>
             <Paper className={classes.paper}>
               <input

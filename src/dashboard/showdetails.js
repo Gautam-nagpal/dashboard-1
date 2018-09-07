@@ -35,25 +35,25 @@ class Showdetails extends Component {
         </button>
         {details.length === undefined ? (
           <Grid container spacing={0}>
-            <Grid item xs={4}>
+            <Grid item xs={3}>
               <Paper className={classes.paper}>
                 <p>Name ={details.name}</p>
               </Paper>
             </Grid>
 
-            <Grid item xs={4}>
+            <Grid item xs={3}>
               <Paper className={classes.paper}>
                 <p>Age ={details.age}</p>
               </Paper>
             </Grid>
 
-            <Grid item xs={4}>
+            <Grid item xs={3}>
               <Paper className={classes.paper}>
                 <p>phone No ={details.phoneno}</p>
               </Paper>
             </Grid>
 
-            <Grid item xs={6}>
+            <Grid item xs={3}>
               <Paper className={classes.paper}>
                 <p>Details ={details.details}</p>
               </Paper>

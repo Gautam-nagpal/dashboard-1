@@ -72,7 +72,7 @@ class Sidebar extends Component {
         <h2>{logindata.username}</h2>
         <p>{logindata.email}</p>
         <br />
-        <div className="w3-sidebar" style={{ height: "92.5vh" }}>
+        <div className="w3-sidebar" style={{ height: "63.6vh" }}>
           {this.props.value.map((data, index) => {
             return (
               <div key={index}>

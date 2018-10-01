@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
-import Login from "./components/login.js";
-import Signup from "./components/signup.js";
-import Forgot from "./components/forgot.js";
-import Dashboard from "./dashboard/dashboard.js";
+import Login from "./Auth/Login";
+import Signup from "./Auth/Signup";
+import Forgot from "./Auth/Forgot";
+import Dashboard from "./Dashboard/Dashboard.js";
 
 class App extends Component {
   render() {

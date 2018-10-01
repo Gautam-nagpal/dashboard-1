@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Dash from "./dash";
+import Dash from "./Dash";
 
 class Dashboard extends Component {
   state = {
@@ -14,6 +14,7 @@ class Dashboard extends Component {
       this.props.history.push("/Login");
     }
   }
+
   logout = e => {
     e.preventDefault();
     localStorage.removeItem("logindata");

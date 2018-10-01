@@ -1,34 +1,44 @@
-import { store } from "../reducer/reducer";
+import { store } from "../Reducer/Reducer";
+import {
+  Resignup,
+  Willmount,
+  AddCollection,
+  AddCollectionData,
+  AddDetails,
+  DeleteDetails
+} from "../Types/Types";
+
+const { dispatch } = store;
 
 export const resignup = e => {
-  return store.dispatch({ type: "resignup", payload: e });
+  return dispatch({ type: Resignup, payload: e });
 };
 
 export const willmount = e => {
-  return store.dispatch({ type: "willmount", payload: e });
+  return dispatch({ type: Willmount, payload: e });
 };
 
 export const Addcollection = e => {
-  return store.dispatch({ type: "add_collection", payload: e });
+  return dispatch({ type: AddCollection, payload: e });
 };
 
 export const Addcollection_data = (data, index) => {
-  return store.dispatch({
-    type: "addcollection_data",
+  return dispatch({
+    type: AddCollectionData,
     payload: { data: data, index: index }
   });
 };
 
 export const Adddetails = (data, classindex, nameindex) => {
-  return store.dispatch({
-    type: "adddetails",
+  return dispatch({
+    type: AddDetails,
     payload: { data: data, classindex: classindex, nameindex: nameindex }
   });
 };
 
 export const Deletedetails = (data, classindex, nameindex) => {
-  return store.dispatch({
-    type: "deletedetails",
+  return dispatch({
+    type: DeleteDetails,
     payload: { data: data, classindex: classindex, nameindex: nameindex }
   });
 };

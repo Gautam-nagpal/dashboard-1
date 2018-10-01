@@ -157,7 +157,8 @@ li a:hover:not(.active) {
 /* ---------------------------Navbar-----------------------------------*/
 
 .w3-sidebar{
-  height:100%;
+   position: relative;
+  min-height: 53.2vh;
   background-color:rgb(255, 244, 244);
   z-index:1;
   overflow:auto;
@@ -284,7 +285,7 @@ box-shadow: 0px 2px 9px -3px rgba(0,0,0,0.99);
 
 /*---------------------------Dashboard-------------------------------*/
 .item1 { grid-area: header; }
-.item2 { grid-area: menu; }
+.item2 { grid-area: menu; height: auto;}
 .item3 { grid-area: main; }
 .item4 { grid-area: right; }
 
@@ -323,7 +324,7 @@ box-shadow: 0px 2px 9px -3px rgba(0,0,0,0.99);
 
 }
 .sidebar-down{
-  bottom: 30px;
+  bottom: 10px;
   position: absolute;
 }
 .collectiondata-data{
@@ -344,6 +345,66 @@ color: #3e3e40;
   border-radius: 9%;
 }
 
+.collectiondata-show:hover,.collectiondata-show:active{
+  font-size: 150%
+
+}
+
+.delete-information{
+  background-color: transparent;
+  background-repeat: no-repeat;
+  margin: 10px;
+  overflow: hidden;
+  color: rgb(0, 0, 0);
+  border: none;
+}
+.information-button{
+  background-color: transparent;
+  background-repeat: no-repeat;
+  margin: 10px;
+  overflow: hidden;
+  color: rgb(0, 0, 0);
+  border: none;
+}
+.input-info{
+  width: 100%;
+  height: 50px;
+  padding: 5px 0 5px 0;
+  border-radius: 10px;
+  background-color: #ffe1b4;
+}
+.input-info1{
+  width: 100%;
+  height: 100px;
+  border-radius: 10px;
+  padding: 5px 0 5px 0;
+  background-color: #ffe1b4;
+}
+
+.modal-button{
+  float: right;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+  background-repeat: no-repeat;
+  overflow: hidden;
+
+}
+
+.ReactModal__Overlay{
+  background-color: rgba(0, 0, 0, 0.75) !important;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  z-index: 1;
+}
+.ReactModal__Content{
+  background-color: transparent!important;
+  border: none!important;
+  
+}
 .MuiList-padding-3 {
   padding-top: 0px !important;
   padding-bottom: 0px !important;
@@ -352,11 +413,6 @@ color: #3e3e40;
   text-align: center!important;
 }
 .Collections-root-1 { 
-}
-.Collectiondatadata-root-67 {
-  width: 100%!important;
-  max-width: 100%!important;
-  background-color: #fff;
 }
 .Collectiondatadata-root-69 {
   width: 100%!important;
@@ -367,7 +423,71 @@ color: #3e3e40;
   padding-top: 0px!important;
   padding-bottom: 0px!important;
 }
-.collectiondata-show:hover,.collectiondata-show:active{
-  font-size: 150%
+.MuiPaper-root-167 {
+  background-color: #ffebeb!important;
+}
+.MuiList-padding-11 {
+  padding-top: 0px!important;
+  padding-bottom: 0px!important;
+}
+.Details-paper-68 {
+  padding: 0px!important;
+}
+.MuiPaper-root-167 {
+  background-color: #ffffff!important;
+}
+.MuiPaper-rounded-420 {
+  border-radius: 13px!important;
+}
+.MuiPaper-rounded-675 {
+  
+  border-radius: 100%!important;
+}
+.Collectiondatadata-root-67 {
+  width: 100%!important;
+  max-width: 100%!important;
+  background-color: #fff;
+}
+.MuiPaper-elevation2-421 {
+  box-shadow: none!important;
+}
+.MuiPaper-root-417 {
+  background-color: transparent!important;
+}
+.MuiList-padding-13 {
+  padding-top: 0px!important;
+  padding-bottom: 0px!important;
+}
+.MuiPaper-rounded-13 {
+  border-radius: 100%!important;
+}
+.Details-paper-99 {
+  padding: 0px!important;
+}
+/* .MuiPaper-root-12 {
+  background-color: transparent!important;
+} */
+.MuiGrid-container-223 {
+  width: 100%;
+  display: none!important;
+  flex-wrap: nowrap!important; 
+}
 
+.MuiList-padding-102 {
+    padding-top: 0px!important;
+    padding-bottom: 0px!important;
+}
+
+
+.showData-P{
+  padding: 10px;
+  background-color: #ffffff;
+}
+
+.yoyo{
+  background-color: white;
+}
+.active, .yoyo:hover {
+  background-color: rgb(255, 35, 35)!important;
+  color: white;
 }

@@ -3,10 +3,10 @@ import { withStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import classNames from "classnames";
 import PropTypes from "prop-types";
+import a from "../../images/a.jpeg";
 import { connect } from "react-redux";
-import { Addcollection } from "../action/action";
-import Collections from "./collections";
-import a from "../images/a.jpeg";
+import Collections from "./Collections";
+import { Addcollection } from "../../Action/Action";
 
 const styles = {
   row: {
@@ -34,12 +34,15 @@ class Sidebar extends Component {
 
   change = e => {
     e.preventDefault();
-    this.setState({ [e.target.name]: e.target.value });
+    let { value } = e.target;
+    this.setState({ title: value });
   };
+
   toggle = e => {
     let { toggle } = this.state;
     this.setState({ toggle: !toggle });
   };
+
   addcollection = e => {
     e.preventDefault();
     this.toggle();
@@ -71,8 +74,25 @@ class Sidebar extends Component {
         </div>
         <h2>{logindata.username}</h2>
         <p>{logindata.email}</p>
+
         <br />
-        <div className="w3-sidebar" style={{ height: "63.6vh" }}>
+        <hr />
+        <br />
+
+        <div align="center ">
+          <i className="material-icons">settings</i>
+          &emsp;&emsp;
+          <i className="material-icons">message</i>
+          &emsp;&emsp;
+          <i className="material-icons">notifications</i>
+          &emsp;&emsp;
+        </div>
+
+        <br />
+        <div className="w3-sidebar">
+          <h3 align="left" style={{ marginTop: "10px", marginLeft: "30px" }}>
+            Teams
+          </h3>
           {this.props.value.map((data, index) => {
             return (
               <div key={index}>
@@ -108,6 +128,8 @@ class Sidebar extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log("value==", state.collections);
+
   if (state === undefined) {
     return {
       value: [

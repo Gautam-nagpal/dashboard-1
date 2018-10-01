@@ -8,8 +8,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
   root: {
-    width: "200px",
-    maxWidth: "200px",
+    width: "100%",
     backgroundColor: theme.palette.background.paper
   }
 });
@@ -17,17 +16,19 @@ const styles = theme => ({
 class Collectiondatadata extends Component {
   state = {};
 
-  details = index1 => {
+  details = () => {
     this.props.collectiondatadetailsindex(this.props.index1);
   };
+
   render() {
     const { classes } = this.props;
+
     return (
-      <div className="collectiondata-data ">
+      <div className="collectiondata-data  ">
         <div className={classes.root}>
           <List component="nav">
-            <button className="w3-bar-item w3-button" onClick={this.details}>
-              {this.props.da.map((finaldata, index1) => {
+            <button className="w3-bar-item w3-button " onClick={this.details}>
+              {this.props.data.map((finaldata, index1) => {
                 return (
                   <div key={index1}>
                     <ListItem button>

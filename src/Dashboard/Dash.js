@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Header from "./header.js";
-import Sidebar from "./sidebar.js";
-import Collectiondata from "./collections-data.js";
-import Details from "./details.js";
+import Header from "./Header/Header.js";
+import Sidebar from "./Sidebar/Sidebar.js";
+import Collectiondata from "./Main/CollectionsData.js";
+import Details from "./Main/Details.js";
 
 class Dash extends Component {
   state = {
@@ -10,13 +10,21 @@ class Dash extends Component {
     index: "",
     nameindex: ""
   };
+
   collectiondatadetailsindex = ind => {
     this.setState({ nameindex: ind });
   };
+
   collectiondataindex = (data, index) => {
     this.setState({
       index: index,
       data: data
+    });
+  };
+
+  deleteinfo = () => {
+    this.setState({
+      nameindex: ""
     });
   };
 
@@ -46,6 +54,8 @@ class Dash extends Component {
           <Details
             classindex={this.state.index}
             nameindex={this.state.nameindex}
+            deleteinfo={this.deleteinfo}
+            logindata={this.props.logindata}
           />
         </div>
       </div>

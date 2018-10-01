@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { resignup } from "../action/action.js";
-import { willmount } from "../action/action.js";
+import { resignup } from "../Action/Action.js";
+import { willmount } from "../Action/Action.js";
 
 class Signup extends Component {
   state = {
@@ -24,6 +24,7 @@ class Signup extends Component {
     var obj = JSON.parse(localStorage.getItem("data"));
     willmount(obj);
   }
+
   Signup = e => {
     e.preventDefault();
     var obj = JSON.parse(localStorage.getItem("data"));
@@ -49,14 +50,6 @@ class Signup extends Component {
       } else {
         alert("password not match");
       }
-
-      // this.setState({
-      //   name: "",
-      //   email: "",
-      //   username: "",
-      //   password: "",
-      //   confirmpass: ""
-      // });
     }
   };
 
